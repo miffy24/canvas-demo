@@ -1,7 +1,9 @@
 var canvas = document.getElementById('canvas');
 var context = canvas.getContext('2d');
-var lineWidth = 4;
+var lineWidth
+//自动设置页面宽度
 autoSetCanvasSize(canvas)
+//监听用户动作
 listenToUser(canvas)
 //使canvas和页面宽高一样
 function autoSetCanvasSize(canvas){
@@ -112,6 +114,7 @@ black.onclick = function(){
     purple.classList.remove('active')
 
 }
+//颜色点击
 green.onclick = function(){
     context.strokeStyle ='green'
     context.fillStyle ='green'
@@ -136,16 +139,35 @@ purple.onclick = function(){
     blue.classList.remove('active')
     purple.classList.add('active')
 }
-
-
+//粗细
+thin.onclick = function(){
+    lineWidth = 2
+}
+thick.onclick = function(){
+    lineWidth = 4
+}
+//clear
+clear.onclick = function(){
+    context.clearRect(0,0,canvas.width,canvas.height)
+}
+//download
+download.onclick = function(){
+    var url =canvas.toDataURL("img.png")
+    var a = document.createElement('a')
+    document.body.appendChild(a)
+    a.href = url
+    a.download = '画'
+    a.target = '_blank'
+    a.click()
+}
 
 //绘制圆形的函数
-function drawCircle(x,y,radius){
-    context.beginPath();
-    context.fillStyle = 'black';
-    context.arc(x,y,radius,0,Math.PI*2);
-    context.fill();
-}
+// function drawCircle(x,y,radius){
+//     context.beginPath();
+//     context.fillStyle = 'black';
+//     context.arc(x,y,radius,0,Math.PI*2);
+//     context.fill();
+// }
 //绘制路径，使点连起来
 function drawLine(x1,y1,x2,y2){
     context.beginPath();
