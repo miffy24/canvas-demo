@@ -94,11 +94,47 @@ function listenToUser(canvas) {
 var eraserEnabled = false
 eraser.onclick = function(){
     eraserEnabled = true
-    actions.className = 'actions x'
+    eraser.classList.add('active')
+    pen.classList.remove('active')
 }
 pen.onclick = function(){
     eraserEnabled = false
-    actions.className = 'actions'
+    eraser.classList.remove('active')
+    pen.classList.add('active')
+}
+
+black.onclick = function(){
+    context.strokeStyle ='black'
+    context.fillStyle = 'black'
+    black.classList.add('active')
+    green.classList.remove('active')
+    blue.classList.remove('active')
+    purple.classList.remove('active')
+
+}
+green.onclick = function(){
+    context.strokeStyle ='green'
+    context.fillStyle ='green'
+    black.classList.remove('active')
+    green.classList.add('active')
+    blue.classList.remove('active')
+    purple.classList.remove('active')
+}
+blue.onclick = function(){
+    context.strokeStyle ='blue'
+    context.fillStyle ='blue'
+    black.classList.remove('active')
+    green.classList.remove('active')
+    blue.classList.add('active')
+    purple.classList.remove('active')
+}
+purple.onclick = function(){
+    context.strokeStyle ='purple'
+    context.fillStyle ='purple'
+    black.classList.remove('active')
+    green.classList.remove('active')
+    blue.classList.remove('active')
+    purple.classList.add('active')
 }
 
 

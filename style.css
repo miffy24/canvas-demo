@@ -1,26 +1,68 @@
+
 #canvas{
- background: green;
+ background: white;
 }
-border{
+
+body{
   margin:0;
+
 }
 *{
   padding:0;
   margin:0;
 }
+ul,ol{list-style: none;}
+.icon {
+       width: 1em; height: 1em;
+       vertical-align: -0.15em;
+       fill: currentColor;
+       overflow: hidden;
+    }
 .actions{
     position: fixed;
-    bottom: 0;
+    top: 0;
     left: 0;
+    padding: 20px;
 }
-.actions>#pen{
-    display: none;
+.actions svg{
+    width:2em;
+    height:2em;
+    margin: 0 10px;
+}
+.actions svg.active{
+    fill:red;
+    transform:scale(1.2);
+    transition: all 0.3s;
+}
+
+.colors{
+    position: fixed;
+    top: 56px;
+    left: 28px;
 
 }
-.actions.x >#pen{
-    display: inline-block;
-}
-.actions.x >#eraser{
-    display: none;
+.colors  >li{
 
+    width: 20px;
+    height: 20px;
+    margin: 10px  0;
+    box-shadow: 0 0 3px rgba(0,,0,0.25);
+    border-radius: 50%;
+}
+.colors >li.black{
+    background: black;
+}
+.colors >li.green{
+    background: green;
+}
+.colors >li.purple{
+    background: purple;
+}
+.colors >li.blue{
+    background: blue;
+}
+.colors>li.active{
+    box-shadow: 0 0 3px rgba(0,0,0,0.95);
+    transform:scale(1.2);
+    transition: 0.3s;
 }
