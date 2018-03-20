@@ -1,6 +1,6 @@
-var canvas = document.getElementById('canvas');
-var context = canvas.getContext('2d');
-var lineWidth
+let canvas = document.getElementById('canvas');
+let context = canvas.getContext('2d');
+let lineWidth
 //自动设置页面宽度
 autoSetCanvasSize(canvas)
 //监听用户动作
@@ -9,28 +9,32 @@ listenToUser(canvas)
 function autoSetCanvasSize(canvas){
     setCanvasSize()
 
+
+
+
+
     window.onresize = function(){
         setCanvasSize()
      }
 
     function setCanvasSize(){
-        var pageWidth =document.documentElement.clientWidth;
-        var pageHeight =document.documentElement.clientHeight;
+        let pageWidth =document.documentElement.clientWidth;
+        let pageHeight =document.documentElement.clientHeight;
         canvas.width= pageWidth
         canvas.height=pageHeight;
-        }
+    }
  }
  //监听鼠标
 function listenToUser(canvas) {
-    var using = false
-    var lastPoint = {x: undefined, y:undefined}
+    let using = false
+    let lastPoint = {x: undefined, y:undefined}
     //特性检测
     if(document.body.ontouchstart!==undefined){
         //触屏设备
         canvas.ontouchstart = function(a){
             console.log('开始了')
-            var x = a.touches[0].clientX
-            var y = a.touches[0].clentY
+            let x = a.touches[0].clientX
+            let y = a.touches[0].clentY
             using = true
             if(eraserEnabled){
                 context.clearRect(x-5,y-5,10,10)
@@ -40,15 +44,15 @@ function listenToUser(canvas) {
         }
         canvas.ontouchmove = function(a){
             console.log('边触摸边移动')
-            var x = a.touches[0].clientX
-            var y = a.touches[0].clientY
+            let x = a.touches[0].clientX
+            let y = a.touches[0].clientY
 
             if(!using){return}
 
             if(eraserEnabled){
                 context.clearRect(x-5,y-5,10,10)
             }else{
-                var newpoint = {"x":x,"y":y}
+                let newpoint = {"x":x,"y":y}
                 drawLine(lastPoint.x,lastPoint.y,newpoint.x,newpoint.y)
                     lastPoint = newpoint
         }
@@ -59,8 +63,8 @@ function listenToUser(canvas) {
         }
     }else{
         canvas.onmousedown = function(a){
-            var x = a.clientX
-            var y = a.clentY
+            let x = a.clientX
+            let y = a.clentY
             using = true
             if(eraserEnabled){
                 context.clearRect(x-5,y-5,10,10)
@@ -69,15 +73,15 @@ function listenToUser(canvas) {
             }
         }
         canvas.onmousemove = function(a){
-            var x = a.clientX
-            var y = a.clientY
+            let x = a.clientX
+            let y = a.clientY
 
             if(!using){return}
 
             if(eraserEnabled){
                 context.clearRect(x-5,y-5,10,10)
             }else{
-                var newpoint = {"x":x,"y":y}
+                let newpoint = {"x":x,"y":y}
                 drawLine(lastPoint.x,lastPoint.y,newpoint.x,newpoint.y)
                     lastPoint = newpoint
             }
@@ -93,7 +97,7 @@ function listenToUser(canvas) {
 
 
 //橡皮擦和笔切换
-var eraserEnabled = false
+let eraserEnabled = false
 eraser.onclick = function(){
     eraserEnabled = true
     eraser.classList.add('active')
@@ -152,13 +156,14 @@ clear.onclick = function(){
 }
 //download
 download.onclick = function(){
-    var url =canvas.toDataURL("img.png")
-    var a = document.createElement('a')
+    let url =canvas.toDataURL("image/png")
+    let a = document.createElement('a')
     document.body.appendChild(a)
-    a.href = url
-    a.download = '画'
-    a.target = '_blank'
-    a.click()
+    let imgName =window.prompt('请您为您的爱图：','画')
+        a.href = url
+        a.download = imgName+'.png'
+        a.target = '_blank'
+        a.click()
 }
 
 //绘制圆形的函数
@@ -173,9 +178,9 @@ function drawLine(x1,y1,x2,y2){
     context.beginPath();
     context.moveTo(x1,y1);
     context.lineWidth = lineWidth;
+    context.lineJoin = context.lineCap = 'round';
     context.lineTo(x2,y2);
     context.stroke();
     context.closePath();
 }
-
 
