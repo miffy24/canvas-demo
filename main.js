@@ -8,11 +8,6 @@ listenToUser(canvas)
 //使canvas和页面宽高一样
 function autoSetCanvasSize(canvas){
     setCanvasSize()
-
-
-
-
-
     window.onresize = function(){
         setCanvasSize()
      }
@@ -116,6 +111,7 @@ black.onclick = function(){
     green.classList.remove('active')
     blue.classList.remove('active')
     purple.classList.remove('active')
+    pink.classList.remove('active')
 
 }
 //颜色点击
@@ -126,6 +122,7 @@ green.onclick = function(){
     green.classList.add('active')
     blue.classList.remove('active')
     purple.classList.remove('active')
+    pink.classList.remove('active')
 }
 blue.onclick = function(){
     context.strokeStyle ='blue'
@@ -134,6 +131,7 @@ blue.onclick = function(){
     green.classList.remove('active')
     blue.classList.add('active')
     purple.classList.remove('active')
+    pink.classList.remove('active')
 }
 purple.onclick = function(){
     context.strokeStyle ='purple'
@@ -142,7 +140,19 @@ purple.onclick = function(){
     green.classList.remove('active')
     blue.classList.remove('active')
     purple.classList.add('active')
+    pink.classList.remove('active')
 }
+
+pink.onclick = function(){
+    context.strokeStyle ='pink'
+    context.fillStyle ='pink'
+    black.classList.remove('active')
+    green.classList.remove('active')
+    blue.classList.remove('active')
+    purple.classList.remove('active')
+    pink.classList.add('active')
+}
+
 //粗细
 thin.onclick = function(){
     lineWidth = 2
