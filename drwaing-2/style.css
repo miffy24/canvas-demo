@@ -2,6 +2,9 @@
     margin: 0;
     padding: 0;
 }
+ul{
+    list-style: none;
+}
 .icon {
     width: 2em; height: 2em;
     vertical-align: -0.15em;
@@ -18,8 +21,28 @@
     top: 1rem;
     left: 0;
 }
-.width .bar{
+.color-bar,
+.width-bar{
     display: none;
+}
+
+.palette{
+    position: absolute;
+    right: 0;
+    top: 1rem;
+}
+.color-bar{
+    padding-left: .5rem;
+}
+.color-bar .color{
+    right: -1rem;
+    width: 1em;
+    height: 1em;
+    margin: 4px 0;
+    border-radius: 50%;
+}
+.active{
+    display: block;
 }
 .tools{
     position: absolute;
@@ -37,10 +60,6 @@
     position: relative;
     border-right: 1px solid #ddd;
 }
-
-.palette{
-    position: absolute;
-    bottom: 4rem;
-    right: 0;
-    top: 1rem;
-}
+.tools .icon:last-child {
+    border-right: none;
+  }
